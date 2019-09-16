@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    tools:context=".fragment.Sales.SalesFragment">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/linear_sales_header"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text="Customer"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:singleLine="true"
+                android:inputType="text"
+                android:capitalize="sentences"
+                android:digits="@string/alphabet"
+                android:id="@+id/edt_customer"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="end"
+                android:text="Date"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:id="@+id/edt_date"
+                android:focusable="false"
+                android:longClickable="false"
+                android:clickable="false"
+                android:enabled="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text="Cashier"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:singleLine="true"
+                android:inputType="text"
+                android:clickable="false"
+                android:digits="@string/alphabet"
+                android:id="@+id/edt_cashier"
+                android:focusable="false"
+                android:enabled="false"
+                android:longClickable="false"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Invoice No."
+                android:gravity="end"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:digits="@string/digits"
+                android:id="@+id/edt_invoice"
+                android:focusable="false"
+                android:enabled="false"
+                android:clickable="false"
+                android:longClickable="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:layout_below="@id/linear_sales_header"
+        android:id="@+id/linear_medicine">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="Medicine Name"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:textSize="12sp"
+            android:inputType="text"
+            android:capitalize="sentences"
+            android:digits="@string/alphabet"
+            android:id="@+id/edt_medicine_name"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="end"
+            android:text="Total no of items"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:textSize="12sp"
+            android:digits="@string/alphabet"
+            android:id="@+id/tv_no_items"/>
+    </LinearLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:id="@+id/list_cart"
+        android:layout_below="@id/linear_medicine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:id="@+id/linear_sub_total"
+        android:layout_below="@id/list_cart"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sub total"
+            android:gravity="end"
+            android:layout_weight="0.7"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_sub_total"
+            android:gravity="end"
+            android:layout_weight="0.28"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_below="@id/linear_sub_total"
+        android:id="@+id/linear_discount"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Discount (%)"
+            android:gravity="end"
+            android:layout_weight="0.7"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:inputType="numberDecimal"
+            android:digits="@string/money"
+            android:id="@+id/edt_discount"
+            android:layout_weight="0.28"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:id="@+id/linear_total"
+        android:layout_below="@id/linear_discount"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_weight="0.7"/>
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.28"
+            android:gravity="end"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:capitalize="sentences"
+        android:textAllCaps="false"
+        android:text="Pay"
+        android:layout_below="@id/linear_total"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:id="@+id/btn_pay"/>
+
+</RelativeLayout>

@@ -1,9 +1,10 @@
-package com.example.retailpos.fragment;
+package com.example.retailpos.fragment.Sales;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,10 @@ import com.example.retailpos.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddEditFragment extends Fragment {
+public class SalesFragment extends Fragment {
 
 
-    public AddEditFragment() {
+    public SalesFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +27,7 @@ public class AddEditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_edit, container, false);
+        return inflater.inflate(R.layout.fragment_sales, container, false);
     }
 
 }
