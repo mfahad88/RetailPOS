@@ -94,4 +94,8 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
             edt_name.setText("");
         }
     }
+
+    public void passDataToFragment(final String key) {
+
+    }
 }

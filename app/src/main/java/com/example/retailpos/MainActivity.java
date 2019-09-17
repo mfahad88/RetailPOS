@@ -9,22 +9,27 @@ import com.example.retailpos.fragment.Inventory.InventoryFragment;
 import com.example.retailpos.fragment.Order.OrderFragment;
 import com.example.retailpos.fragment.Sales.SalesFragment;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tv_inventory;
     TextView tv_sale;
     TextView tv_order;
     TextView tv_generate_report;
+    InventoryFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         tv_inventory=findViewById(R.id.tv_inventory);
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_sale.setOnClickListener(this);
         tv_order.setOnClickListener(this);
         tv_generate_report.setOnClickListener(this);
+        fragment=new InventoryFragment();
     }
 
     /*@Override
@@ -66,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view.getId()==R.id.tv_inventory){
 
-            Utils.replaceFragment(MainActivity.this,new InventoryFragment());
+            Utils.replaceFragment(MainActivity.this,fragment);
         }if(view.getId()==R.id.tv_sale){
             Utils.replaceFragment(MainActivity.this,new SalesFragment());
         }if(view.getId()==R.id.tv_order){
@@ -74,5 +80,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    
+
+    public void getKey(View view) {
+        if(view.getId()!=R.id.btn_backspace || view.getId()!=R.id.btn_space || view.getId()!=R.id.btn_return || view.getId()!=R.id.btn_cap) {
+            fragment.passDataToFragment(((Button) view).getText().toString());
+        }
+
+    }
+
+
 }
