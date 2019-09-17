@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void getKey(View view) {
         if(view.getId()!=R.id.btn_backspace || view.getId()!=R.id.btn_space || view.getId()!=R.id.btn_return || view.getId()!=R.id.btn_cap) {
             fragment.passDataToFragment(((Button) view).getText().toString());
+        } if(view.getId()==R.id.btn_backspace){
+            fragment.passDataToFragment("backspace");
         }
 
     }

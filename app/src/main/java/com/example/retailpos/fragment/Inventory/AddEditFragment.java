@@ -97,5 +97,82 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
 
     public void passDataToFragment(final String key) {
 
+        if(edt_name.hasFocus()){
+            int length = edt_name.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_name.getText().delete(length-1,length);
+                }
+            }else {
+                edt_name.append(key);
+            }
+        }
+        if(edt_generic.hasFocus()){
+            int length = edt_generic.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_generic.getText().delete(length-1,length);
+                }
+            }else {
+                edt_generic.append(key);
+            }
+        }
+        if(edt_batch_no.hasFocus()){
+            int length = edt_batch_no.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_batch_no.getText().delete(length-1,length);
+                }
+            }else {
+                edt_batch_no.append(key);
+            }
+        }
+        if(edt_cost.hasFocus()){
+            int length = edt_cost.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_cost.getText().delete(length-1,length);
+                }
+            }else {
+                edt_cost.append(key);
+            }
+        }
+        if(edt_price.hasFocus()){
+            int length = edt_price.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_price.getText().delete(length-1,length);
+                }
+            }else {
+                edt_price.append(key);
+            }
+        }
+        if(edt_min.hasFocus()){
+            int length = edt_min.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_min.getText().delete(length-1,length);
+                }
+            }else {
+                edt_min.append(key);
+            }
+        }
+        if(edt_max.hasFocus()){
+            int length = edt_max.getText().length();
+            if(key.equals("backspace")){
+
+                if(length>0) {
+                    edt_max.getText().delete(length-1,length);
+                }
+            }else {
+                edt_max.append(key);
+            }
+        }
     }
 }
