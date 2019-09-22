@@ -1,260 +1,787 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    tools:context=".fragment.Sales.SalesFragment">
-
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:id="@+id/linear_sales_header"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:text="Customer"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:singleLine="true"
-                android:inputType="text"
-                android:capitalize="sentences"
-                android:digits="@string/alphabet"
-                android:id="@+id/edt_customer"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:gravity="end"
-                android:text="Date"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:id="@+id/edt_date"
-                android:focusable="false"
-                android:longClickable="false"
-                android:clickable="false"
-                android:enabled="false"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:text="Cashier"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:singleLine="true"
-                android:inputType="text"
-                android:clickable="false"
-                android:digits="@string/alphabet"
-                android:id="@+id/edt_cashier"
-                android:focusable="false"
-                android:enabled="false"
-                android:longClickable="false"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="Invoice No."
-                android:gravity="end"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:singleLine="true"
-                android:inputType="numberDecimal"
-                android:digits="@string/digits"
-                android:id="@+id/edt_invoice"
-                android:focusable="false"
-                android:enabled="false"
-                android:clickable="false"
-                android:longClickable="false"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:orientation="horizontal">
-
-
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
         android:orientation="horizontal"
-        android:layout_below="@id/linear_sales_header"
-        android:id="@+id/linear_medicine">
+        android:weightSum="1">
 
-        <TextView
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:text="Medicine Name"
-            android:textSize="12sp"
-            android:textStyle="bold"/>
+            android:layout_weight="0.5">
 
-        <EditText
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/relative_field">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:id="@+id/linear_customer"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:text="Customer"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:singleLine="true"
+                                android:inputType="text"
+                                android:capitalize="sentences"
+                                android:digits="@string/alphabet"
+                                android:id="@+id/edt_customer"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:gravity="end"
+                                android:text="Date"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:id="@+id/edt_date"
+                                android:focusable="false"
+                                android:longClickable="false"
+                                android:clickable="false"
+                                android:enabled="false"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:id="@+id/linear_cashier"
+                            android:layout_below="@id/linear_customer"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:text="Cashier"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:singleLine="true"
+                                android:inputType="text"
+                                android:clickable="false"
+                                android:digits="@string/alphabet"
+                                android:id="@+id/edt_cashier"
+                                android:focusable="false"
+                                android:enabled="false"
+                                android:longClickable="false"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:text="Invoice No."
+                                android:gravity="end"
+                                android:textStyle="bold"
+                                android:textSize="14sp"/>
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:digits="@string/digits"
+                                android:id="@+id/edt_invoice"
+                                android:focusable="false"
+                                android:enabled="false"
+                                android:clickable="false"
+                                android:longClickable="false"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:orientation="horizontal"
+                            android:layout_below="@id/linear_cashier"
+                            android:id="@+id/linear_medicine">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:text="Medicine Name"
+                                android:textSize="12sp"
+                                android:textStyle="bold"/>
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:textSize="12sp"
+                                android:inputType="text"
+                                android:capitalize="sentences"
+                                android:digits="@string/alphabet"
+                                android:id="@+id/edt_medicine_name"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:gravity="end"
+                                android:text="Total no of items"
+                                android:textSize="12sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:textSize="12sp"
+                                android:digits="@string/digits"
+                                android:id="@+id/tv_no_items"/>
+                        </LinearLayout>
+
+                        <ListView
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:id="@+id/list_cart"
+                            android:layout_below="@id/linear_medicine"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:id="@+id/linear_sub_total"
+                            android:layout_below="@id/list_cart"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Sub total"
+                                android:gravity="end"
+                                android:layout_weight="0.7"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tv_sub_total"
+                                android:gravity="end"
+                                android:layout_weight="0.28"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_below="@id/linear_sub_total"
+                            android:id="@+id/linear_discount"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Discount (%)"
+                                android:gravity="end"
+                                android:layout_weight="0.7"/>
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:inputType="numberDecimal"
+                                android:digits="@string/money"
+                                android:id="@+id/edt_discount"
+                                android:layout_weight="0.28"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:id="@+id/linear_total"
+                            android:layout_below="@id/linear_discount"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Total"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:gravity="end"
+                                android:layout_weight="0.7"/>
+
+                            <TextView
+                                android:id="@+id/tv_total"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.28"
+                                android:gravity="end"
+                                android:textColor="@color/design_default_color_primary_dark"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:capitalize="sentences"
+                            android:textAllCaps="false"
+                            android:text="Pay"
+                            android:layout_below="@id/linear_total"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="15dp"
+                            android:id="@+id/btn_pay"/>
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:textSize="12sp"
-            android:inputType="text"
-            android:capitalize="sentences"
-            android:digits="@string/alphabet"
-            android:id="@+id/edt_medicine_name"/>
+            android:layout_gravity="top"
+            android:layout_weight="0.5">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:gravity="end"
-            android:text="Total no of items"
-            android:textSize="12sp"
-            android:textStyle="bold"/>
+            <RelativeLayout
+                android:id="@+id/relative_alphabet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:textSize="12sp"
-            android:digits="@string/alphabet"
-            android:id="@+id/tv_no_items"/>
+
+                <LinearLayout
+                    android:id="@+id/linear_row_zero_digits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/btn_br_left"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="("
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_br_right"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text=")"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_dash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="-"
+                        android:textAllCaps="false" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_row_one_digits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_row_zero_digits"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/btn_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="1"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="2"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="3"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="4"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="5"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="6"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="7"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="8"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="9"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="0"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_row_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_row_one_digits"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/btn_q"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="q"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_w"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="w"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_e"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="e"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_r"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="r"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_t"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="t"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_y"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="y"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_u"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="u"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_i"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="i"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_o"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="o"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_p"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="p"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_row_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_row_one"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <Button
+                        android:id="@+id/btn_a"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="a"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_s"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="s"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_d"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="d"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_f"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="f"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_g"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="g"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_h"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="h"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_j"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="j"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_k"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="k"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_l"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="l"
+                        android:textAllCaps="false" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linear_row_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_row_two"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="1.8">
+
+
+                    <Button
+                        android:id="@+id/btn_cap"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:drawableStart="@drawable/ic_arrow_upward_black_24dp"
+                        android:drawableLeft="@drawable/ic_arrow_upward_black_24dp"
+                        android:onClick="getKeySales"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_z"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="z"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_x"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="x"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_c"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="c"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_v"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="v"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_b"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="b"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_n"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="n"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_m"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="m"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_backspace"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:drawableStart="@drawable/ic_backspace_black_24dp"
+                        android:drawableLeft="@drawable/ic_backspace_black_24dp"
+                        android:onClick="getKeySales"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textAllCaps="false" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_row_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_row_three"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="1.3">
+
+
+                    <!--<Button
+                    android:id="@+id/btn_digits"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:text="123?"
+                    android:textAllCaps="false"
+                    android:onClick="getKeySales"/>-->
+
+                    <Button
+                        android:id="@+id/btn_comma"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text=","
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_space"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:onClick="getKeySales"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_dot"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:onClick="getKeySales"
+                        android:text="."
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/btn_return"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:drawableStart="@drawable/ic_keyboard_return_black_24dp"
+                        android:drawableLeft="@drawable/ic_keyboard_return_black_24dp"
+                        android:onClick="getKeySales"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:id="@+id/list_cart"
-        android:layout_below="@id/linear_medicine"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:id="@+id/linear_sub_total"
-        android:layout_below="@id/list_cart"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Sub total"
-            android:gravity="end"
-            android:layout_weight="0.7"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_sub_total"
-            android:gravity="end"
-            android:layout_weight="0.28"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_below="@id/linear_sub_total"
-        android:id="@+id/linear_discount"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Discount (%)"
-            android:gravity="end"
-            android:layout_weight="0.7"/>
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:inputType="numberDecimal"
-            android:digits="@string/money"
-            android:id="@+id/edt_discount"
-            android:layout_weight="0.28"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:id="@+id/linear_total"
-        android:layout_below="@id/linear_discount"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Total"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:gravity="end"
-            android:layout_weight="0.7"/>
-
-        <TextView
-            android:id="@+id/tv_total"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.28"
-            android:gravity="end"
-            android:textColor="@color/design_default_color_primary_dark"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:capitalize="sentences"
-        android:textAllCaps="false"
-        android:text="Pay"
-        android:layout_below="@id/linear_total"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:id="@+id/btn_pay"/>
-
 </RelativeLayout>

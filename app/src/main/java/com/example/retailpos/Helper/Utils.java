@@ -14,10 +14,10 @@ import com.example.retailpos.R;
 
 public class Utils {
 
-    public static void replaceFragment(Context context,Fragment fragment){
+    public static void replaceFragment(Context context,Fragment fragment,String tag){
         Activity activity=(Activity)context;
         FragmentTransaction ft=activity.getFragmentManager().beginTransaction();
-        ft.replace(R.id.main_container,fragment);
+        ft.replace(R.id.main_container,fragment,tag);
         ft.addToBackStack(null);
         ft.commit();
     }

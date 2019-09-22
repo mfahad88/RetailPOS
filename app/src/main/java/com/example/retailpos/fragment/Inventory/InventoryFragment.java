@@ -27,7 +27,7 @@ public class InventoryFragment extends Fragment implements View.OnClickListener 
     ListView listview_inventory;
     Button btn_add;
     AddEditFragment fragment;
-
+    boolean isUpper=false;
 
     public InventoryFragment() {
         // Required empty public constructor
@@ -59,8 +59,8 @@ public class InventoryFragment extends Fragment implements View.OnClickListener 
         fragment=new AddEditFragment();
     }
 
-    public void passDataToFragment(String key) {
-        fragment.passDataToFragment(key);
+    public void passDataToFragment(View view) {
+        fragment.passDataToFragment(view);
     }
 
 
