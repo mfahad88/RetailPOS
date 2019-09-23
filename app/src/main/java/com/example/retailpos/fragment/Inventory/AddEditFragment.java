@@ -25,11 +25,11 @@ import com.example.retailpos.R;
  */
 public class AddEditFragment extends Fragment implements View.OnClickListener {
     View rootView;
-    EditText edt_name,edt_generic,edt_batch_no,edt_cost,edt_price,edt_min,edt_max;
+    EditText edt_name,edt_generic,edt_batch_no,edt_cost,edt_price,edt_min,edt_max,edt_expiry_date;
     Button btn_add,btn_clear;
     RelativeLayout relativeLayout;
     boolean isCaptial=false;
-    private LinearLayout linear_field;
+    private RelativeLayout relative_field;
     public AddEditFragment() {
         // Required empty public constructor
     }
@@ -47,10 +47,11 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
         edt_price=rootView.findViewById(R.id.edt_price);
         edt_min=rootView.findViewById(R.id.edt_min);
         edt_max=rootView.findViewById(R.id.edt_max);
+        edt_expiry_date=rootView.findViewById(R.id.edt_expiry_date);
         btn_add=rootView.findViewById(R.id.btn_add);
         btn_clear=rootView.findViewById(R.id.btn_clear);
         relativeLayout=rootView.findViewById(R.id.relative_alphabet);
-        linear_field=rootView.findViewById(R.id.linear_field);
+        relative_field=rootView.findViewById(R.id.relative_field);
         Utils.disableKeyboard(edt_batch_no);
         Utils.disableKeyboard(edt_cost);
         Utils.disableKeyboard(edt_generic);
@@ -58,6 +59,7 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
         Utils.disableKeyboard(edt_min);
         Utils.disableKeyboard(edt_name);
         Utils.disableKeyboard(edt_price);
+        Utils.disableKeyboard(edt_expiry_date);
 
         edt_name.requestFocus();
 
@@ -148,6 +150,8 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
                 edt_min.requestFocus();
             }else if(edt_min.hasFocus()){
                 edt_max.requestFocus();
+            }else if(edt_max.hasFocus()){
+                edt_expiry_date.requestFocus();
             }
 
         }
@@ -157,10 +161,11 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
             upperCase(isCaptial);
         }
 
-        for(int i=0;i<linear_field.getChildCount();i++){
-            RelativeLayout relativeLayout=(RelativeLayout)linear_field.getChildAt(i);
-            for(int j=0;j<relativeLayout.getChildCount();j++){
-                LinearLayout layout=(LinearLayout)relativeLayout.getChildAt(j);
+
+
+            for(int j=0;j<relative_field.getChildCount();j++){
+                LinearLayout layout=(LinearLayout)relative_field.getChildAt(j);
+                Log.e("Relative--->", String.valueOf(layout.getChildAt(j)));
                 for(int k=0;k<layout.getChildCount();k++){
                     View v=(View)layout.getChildAt(k);
                     EditText editText;
@@ -184,84 +189,5 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-        }
-
-        /*if(edt_name.hasFocus()){
-            int length = edt_name.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_name.getText().delete(length-1,length);
-                }
-            }else {
-                edt_name.append(key);
-            }
-        }
-        if(edt_generic.hasFocus()){
-            int length = edt_generic.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_generic.getText().delete(length-1,length);
-                }
-            }else {
-                edt_generic.append(key);
-            }
-        }
-        if(edt_batch_no.hasFocus()){
-            int length = edt_batch_no.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_batch_no.getText().delete(length-1,length);
-                }
-            }else {
-                edt_batch_no.append(key);
-            }
-        }
-        if(edt_cost.hasFocus()){
-            int length = edt_cost.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_cost.getText().delete(length-1,length);
-                }
-            }else {
-                edt_cost.append(key);
-            }
-        }
-        if(edt_price.hasFocus()){
-            int length = edt_price.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_price.getText().delete(length-1,length);
-                }
-            }else {
-                edt_price.append(key);
-            }
-        }
-        if(edt_min.hasFocus()){
-            int length = edt_min.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_min.getText().delete(length-1,length);
-                }
-            }else {
-                edt_min.append(key);
-            }
-        }
-        if(edt_max.hasFocus()){
-            int length = edt_max.getText().length();
-            if(key.equals("backspace")){
-
-                if(length>0) {
-                    edt_max.getText().delete(length-1,length);
-                }
-            }else {
-                edt_max.append(key);
-            }
-        }*/
     }
 }

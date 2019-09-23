@@ -8,14 +8,14 @@
     tools:context=".fragment.Inventory.AddEditFragment">
 
 
-    <ScrollView
+    <!--<ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical" >-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,9 +29,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5">
 
-                    <RelativeLayout
+                    <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/relative_field">
 
                         <LinearLayout
                             android:id="@+id/linear_name"
@@ -213,9 +217,34 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/linear_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/linear_max"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="0.4"
+                                android:text="Expiry Date (dd-mm-yyyy)"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/edt_expiry_date"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:digits="@string/date"
+                                android:inputType="none"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/linear_date"
                             android:weightSum="1">
 
                             <Button
@@ -234,7 +263,7 @@
                         </LinearLayout>
 
                     </RelativeLayout>
-
+                    </ScrollView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -748,8 +777,8 @@
 
 
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+    <!--    </LinearLayout>
+    </ScrollView>-->
 
 </RelativeLayout>
 
