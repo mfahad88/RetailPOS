@@ -217,10 +217,35 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/linear_date"
+                            android:id="@+id/linear_qty"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/linear_max"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.25"
+                                android:text="Quantity"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/edt_qty"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:capitalize="sentences"
+                                android:digits="@string/digits"
+                                android:inputType="numberDecimal"
+                                android:singleLine="true" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/linear_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/linear_qty"
                             android:weightSum="1">
 
                             <TextView

@@ -134,7 +134,9 @@ public class SalesFragment extends Fragment implements View.OnClickListener {
                                     if(length>0) {
                                         editText.getText().delete(length - 1, length);
                                     }
-                                }else {
+                                }if(view.getId()==R.id.btn_space){
+                                    editText.append(" ");
+                                } else{
                                     editText.append(str);
                                 }
                             }

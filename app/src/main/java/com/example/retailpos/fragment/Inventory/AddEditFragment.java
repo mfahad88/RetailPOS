@@ -25,7 +25,7 @@ import com.example.retailpos.R;
  */
 public class AddEditFragment extends Fragment implements View.OnClickListener {
     View rootView;
-    EditText edt_name,edt_generic,edt_batch_no,edt_cost,edt_price,edt_min,edt_max,edt_expiry_date;
+    EditText edt_name,edt_generic,edt_batch_no,edt_cost,edt_price,edt_min,edt_max,edt_expiry_date,edt_qty;
     Button btn_add,btn_clear;
     RelativeLayout relativeLayout;
     boolean isCaptial=false;
@@ -48,6 +48,7 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
         edt_min=rootView.findViewById(R.id.edt_min);
         edt_max=rootView.findViewById(R.id.edt_max);
         edt_expiry_date=rootView.findViewById(R.id.edt_expiry_date);
+        edt_qty=rootView.findViewById(R.id.edt_qty);
         btn_add=rootView.findViewById(R.id.btn_add);
         btn_clear=rootView.findViewById(R.id.btn_clear);
         relativeLayout=rootView.findViewById(R.id.relative_alphabet);
@@ -60,6 +61,7 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
         Utils.disableKeyboard(edt_name);
         Utils.disableKeyboard(edt_price);
         Utils.disableKeyboard(edt_expiry_date);
+        Utils.disableKeyboard(edt_qty);
 
         edt_name.requestFocus();
 
@@ -93,6 +95,7 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
                 edt_batch_no.setText("");
                 edt_generic.setText("");
                 edt_name.setText("");
+                edt_qty.setText("");
             }else{
                 Toast.makeText(rootView.getContext(), "Empty field not allowed...", Toast.LENGTH_SHORT).show();
             }
@@ -104,6 +107,7 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
             edt_batch_no.setText("");
             edt_generic.setText("");
             edt_name.setText("");
+            edt_qty.setText("");
         }
     }
 
@@ -151,6 +155,8 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
             }else if(edt_min.hasFocus()){
                 edt_max.requestFocus();
             }else if(edt_max.hasFocus()){
+                edt_qty.requestFocus();
+            }else if(edt_qty.hasFocus()){
                 edt_expiry_date.requestFocus();
             }
 
@@ -178,7 +184,9 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
                                 if(length>0) {
                                     editText.getText().delete(length - 1, length);
                                 }
-                            }else {
+                            }if (view.getId()==R.id.btn_space){
+                                editText.append(" ");
+                            } else {
                                 editText.append(str);
                             }
 
