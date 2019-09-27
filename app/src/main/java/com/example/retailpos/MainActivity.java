@@ -20,6 +20,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tv_inventory;
     TextView tv_sale;
@@ -48,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         salesFragment=new SalesFragment();
         main_container=findViewById(R.id.main_container);
         Utils.replaceFragment(MainActivity.this,fragment,"Inventory");
+        /*try {
+            Utils.copyDataBase(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
     }
 

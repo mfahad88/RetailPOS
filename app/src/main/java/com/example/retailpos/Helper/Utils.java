@@ -12,6 +12,11 @@ import android.widget.EditText;
 
 import com.example.retailpos.R;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class Utils {
 
     public static void replaceFragment(Context context,Fragment fragment,String tag){
@@ -42,5 +47,27 @@ public class Utils {
                 return true; // consume touch even
             }
         });
+    }
+
+
+
+    public static void copyDataBase(Context myContext) throws IOException
+    {
+        String package_name=myContext.getPackageName();
+        String DB_PATH = "/data/data/"+package_name+"/databases/";
+        String DB_NAME = "sales_inventory_db.db";
+
+        InputStream mInput = myContext.getAssets().open(DB_NAME);
+        String outFileName = DB_PATH + DB_NAME;
+        OutputStream mOutput = new FileOutputStream(outFileName);
+        byte[] mBuffer = new byte[2024];
+        int mLength;
+        while ((mLength = mInput.read(mBuffer)) > 0) {
+            mOutput.write(mBuffer, 0, mLength);
+        }
+        mOutput.flush();
+        mOutput.close();
+        mInput.close();
+        System.out.println("database copied");
     }
 }
