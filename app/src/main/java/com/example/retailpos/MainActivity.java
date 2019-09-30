@@ -2,9 +2,11 @@ package com.example.retailpos;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.example.retailpos.Helper.Utils;
+import com.example.retailpos.database.DbHelper;
 import com.example.retailpos.fragment.Inventory.InventoryFragment;
 import com.example.retailpos.fragment.Order.OrderFragment;
 import com.example.retailpos.fragment.Sales.SalesFragment;
@@ -30,18 +32,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     InventoryFragment fragment;
     SalesFragment salesFragment;
     FrameLayout main_container;
+    DbHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Utils.copyDataBase(MainActivity.this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         tv_inventory=findViewById(R.id.tv_inventory);
         tv_sale=findViewById(R.id.tv_sale);
         tv_order=findViewById(R.id.tv_order);
         tv_generate_report=findViewById(R.id.tv_generate_report);
-
+        dbHelper=new DbHelper(this);
         tv_inventory.setOnClickListener(this);
         tv_sale.setOnClickListener(this);
         tv_order.setOnClickListener(this);
@@ -50,17 +53,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         salesFragment=new SalesFragment();
         main_container=findViewById(R.id.main_container);
         Utils.replaceFragment(MainActivity.this,fragment,"Inventory");
-        /*try {
-            Utils.copyDataBase(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+
 
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            finishAffinity();
+        }else {
+            finish();
+        }
+        System.exit(1);
     }
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,41 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".dialog.BatchDialog">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:orientation="horizontal"
-        android:weightSum="6"
+        android:weightSum="4"
         android:layout_alignParentTop="true"
         android:id="@+id/linear_inventory_header"
-        >
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:text="Name"
-            android:id="@+id/tv_name"/>
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:text="Generic"
-            android:id="@+id/tv_generic"/>
-
+        android:background="@color/colorPrimary">
 
         <!--<TextView
             android:layout_width="0dp"
@@ -43,11 +20,52 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="12sp"
-            android:gravity="left|center_vertical"
-            android:text="Potency"
-            android:id="@+id/tv_potency"/>-->
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Name"/>
 
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Generic" />-->
+
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Batch No." />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Exp. Date" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Quatity" />
 
         <!--<TextView
             android:layout_width="0dp"
@@ -55,10 +73,9 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:text="Batch No."
-            android:id="@+id/tv_batch_no"/>
+            android:text="Cost" />
 
         <TextView
             android:layout_width="0dp"
@@ -66,10 +83,9 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:text="Exp. Date"
-            android:id="@+id/tv_exp_date"/>-->
+            android:text="Price" />-->
 
         <TextView
             android:layout_width="0dp"
@@ -77,49 +93,26 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:text="Quatity"
-            android:id="@+id/tv_qty"/>
+            android:text="Delete" />
 
-        <TextView
+       <!--<TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:text="Cost"
-            android:id="@+id/tv_cost"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:text="Price"
-            android:id="@+id/tv_price"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center|center_vertical"
-            android:id="@+id/img_delete"/>
-
-        <!--<ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center|center_vertical"
-            android:id="@+id/img_edit" />-->
+            android:text="Edit" />-->
     </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listview_batch"
+        android:layout_below="@id/linear_inventory_header"
+        />
+
 </RelativeLayout>

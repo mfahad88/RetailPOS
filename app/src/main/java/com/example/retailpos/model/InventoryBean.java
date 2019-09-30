@@ -2,64 +2,30 @@ package com.example.retailpos.model;
 
 public class InventoryBean {
 
-    private String name;
-    private String generic;
-    private String potency;
-    private String batch_no;
-    private String exp_date;
+    private int inventory_id;
+    private int product_id;
     private int quantity;
-    private String cost;
-    private String price;
 
-    public InventoryBean(String name, String generic, String potency, String batch_no, String exp_date, int quantity, String cost, String price) {
-        this.name = name;
-        this.generic = generic;
-        this.potency = potency;
-        this.batch_no = batch_no;
-        this.exp_date = exp_date;
+    public InventoryBean(int inventory_id, int product_id, int quantity) {
+        this.inventory_id = inventory_id;
+        this.product_id = product_id;
         this.quantity = quantity;
-        this.cost = cost;
-        this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public int getInventory_id() {
+        return inventory_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setInventory_id(int inventory_id) {
+        this.inventory_id = inventory_id;
     }
 
-    public String getGeneric() {
-        return generic;
+    public int getProduct_id() {
+        return product_id;
     }
 
-    public void setGeneric(String generic) {
-        this.generic = generic;
-    }
-
-    public String getPotency() {
-        return potency;
-    }
-
-    public void setPotency(String potency) {
-        this.potency = potency;
-    }
-
-    public String getBatch_no() {
-        return batch_no;
-    }
-
-    public void setBatch_no(String batch_no) {
-        this.batch_no = batch_no;
-    }
-
-    public String getExp_date() {
-        return exp_date;
-    }
-
-    public void setExp_date(String exp_date) {
-        this.exp_date = exp_date;
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 
     public int getQuantity() {
@@ -70,33 +36,12 @@ public class InventoryBean {
         this.quantity = quantity;
     }
 
-    public String getCost() {
-        return cost;
-    }
-
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
         return "InventoryBean{" +
-                "name='" + name + '\'' +
-                ", generic='" + generic + '\'' +
-                ", potency='" + potency + '\'' +
-                ", batch_no='" + batch_no + '\'' +
-                ", exp_date='" + exp_date + '\'' +
+                "inventory_id=" + inventory_id +
+                ", product_id=" + product_id +
                 ", quantity=" + quantity +
-                ", cost='" + cost + '\'' +
-                ", price='" + price + '\'' +
                 '}';
     }
 }

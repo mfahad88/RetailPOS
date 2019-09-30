@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import com.example.retailpos.R;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,23 +52,30 @@ public class Utils {
 
 
 
-    public static void copyDataBase(Context myContext) throws IOException
+    public static void copyDataBase(Context myContext)
     {
-        String package_name=myContext.getPackageName();
-        String DB_PATH = "/data/data/"+package_name+"/databases/";
-        String DB_NAME = "sales_inventory_db.db";
-
-        InputStream mInput = myContext.getAssets().open(DB_NAME);
-        String outFileName = DB_PATH + DB_NAME;
-        OutputStream mOutput = new FileOutputStream(outFileName);
-        byte[] mBuffer = new byte[2024];
-        int mLength;
-        while ((mLength = mInput.read(mBuffer)) > 0) {
-            mOutput.write(mBuffer, 0, mLength);
+        try {
+            String package_name=myContext.getPackageName();
+            String DB_PATH = "/data/data/"+package_name+"/databases/";
+            String DB_NAME = "sales_inventory_db.db";
+            File file=new File(DB_PATH);
+            if(!file.exists()){
+                file.mkdirs();
+                InputStream mInput = myContext.getAssets().open(DB_NAME);
+                String outFileName = DB_PATH + DB_NAME;
+                OutputStream mOutput = new FileOutputStream(outFileName);
+                byte[] mBuffer = new byte[2024];
+                int mLength;
+                while ((mLength = mInput.read(mBuffer)) > 0) {
+                    mOutput.write(mBuffer, 0, mLength);
+                }
+                mOutput.flush();
+                mOutput.close();
+                mInput.close();
+                System.out.println("database copied");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        mOutput.flush();
-        mOutput.close();
-        mInput.close();
-        System.out.println("database copied");
     }
 }

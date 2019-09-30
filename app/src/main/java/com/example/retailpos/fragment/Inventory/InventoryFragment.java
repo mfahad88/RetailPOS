@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.example.retailpos.Helper.Utils;
 import com.example.retailpos.R;
+import com.example.retailpos.adapter.InventoryAdapter;
+import com.example.retailpos.database.DbHelper;
+import com.example.retailpos.interfaces.InterfaceInventory;
 import com.example.retailpos.interfaces.InterfaceKeyboard;
 
 
@@ -27,8 +30,10 @@ public class InventoryFragment extends Fragment implements View.OnClickListener 
     ListView listview_inventory;
     Button btn_add;
     AddEditFragment fragment;
+    DbHelper dbHelper;
     boolean isUpper=false;
-
+    InterfaceInventory interfaceInventory;
+    InventoryAdapter adapter;
     public InventoryFragment() {
         // Required empty public constructor
     }
@@ -40,6 +45,11 @@ public class InventoryFragment extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         rootView=inflater.inflate(R.layout.fragment_inventory, container, false);
         init();
+
+        adapter = new InventoryAdapter(rootView.getContext(),R.layout.inventory_adapter,dbHelper.getAllProductInventory(),interfaceInventory,dbHelper);
+
+        listview_inventory.setAdapter(adapter);
+
         btn_add.setOnClickListener(this);
         return rootView;
     }
@@ -57,6 +67,23 @@ public class InventoryFragment extends Fragment implements View.OnClickListener 
         listview_inventory=rootView.findViewById(R.id.listview_inventory);
         btn_add=rootView.findViewById(R.id.btn_add);
         fragment=new AddEditFragment();
+        dbHelper=new DbHelper(rootView.getContext());
+        interfaceInventory=new InterfaceInventory() {
+            @Override
+            public void isInventory(boolean isdeleted) {
+
+                if(isdeleted){
+                    adapter.clear();
+                    adapter.addAll(dbHelper.getAllProductInventory());
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(rootView.getContext(), "Record deleted...", Toast.LENGTH_SHORT).show();
+
+
+                }else{
+                    Toast.makeText(rootView.getContext(), "Something went wrong try again please...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
     }
 
     public void passDataToFragment(View view) {

@@ -107,7 +107,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
                                 android:capitalize="sentences"
-                                android:digits="@string/digits"
+                                android:digits="@string/alphanumeric"
                                 android:inputType="number"
                                 android:singleLine="true" />
                         </LinearLayout>
