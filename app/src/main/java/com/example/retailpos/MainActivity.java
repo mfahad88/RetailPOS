@@ -103,13 +103,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void getKey(View view) {
+    public void getKey(final View view) {
 
-        fragment.passDataToFragment(view);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                fragment.passDataToFragment(view);
+            }
+        }).start();
     }
 
-    public void getKeySales(View view){
-        salesFragment.passDataToFragment(view);
+    public void getKeySales(final View view){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                salesFragment.passDataToFragment(view);
+            }
+        }).start();
     }
 
 

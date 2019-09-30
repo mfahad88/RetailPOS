@@ -86,8 +86,13 @@ public class InventoryFragment extends Fragment implements View.OnClickListener 
         };
     }
 
-    public void passDataToFragment(View view) {
-        fragment.passDataToFragment(view);
+    public void passDataToFragment(final View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                fragment.passDataToFragment(view);
+            }
+        }).start();
     }
 
 

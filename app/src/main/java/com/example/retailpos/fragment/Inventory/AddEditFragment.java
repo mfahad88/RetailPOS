@@ -2,6 +2,7 @@ package com.example.retailpos.fragment.Inventory;
 
 
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 
@@ -172,69 +173,85 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
         return isUpper;
     }
     public void passDataToFragment(final View view) {
-        Button btn=(Button)view;
-        String str;
-        if(isCaptial){
-            str=btn.getText().toString().toUpperCase();
-        }else{
-            str=btn.getText().toString().toLowerCase();
-        }
-        if(view.getId()==R.id.btn_return){
-            if(edt_name.hasFocus()){
-                edt_generic.requestFocus();
-            }else if(edt_generic.hasFocus()){
-                edt_batch_no.requestFocus();
-            }else if(edt_batch_no.hasFocus()){
-                edt_cost.requestFocus();
-            }else if(edt_cost.hasFocus()){
-                edt_price.requestFocus();
-            }else if(edt_price.hasFocus()){
-                edt_min.requestFocus();
-            }else if(edt_min.hasFocus()){
-                edt_max.requestFocus();
-            }else if(edt_max.hasFocus()){
-                edt_qty.requestFocus();
-            }else if(edt_qty.hasFocus()){
-                edt_expiry_date.requestFocus();
+        new AsyncKeyboard().execute(view);
+    }
+
+    public class AsyncKeyboard extends AsyncTask<View,Void,View>{
+
+
+        @Override
+        protected void onPostExecute(View view) {
+//            super.onPostExecute(view);
+            Button btn=(Button)view;
+            String str;
+            if(isCaptial){
+                str=btn.getText().toString().toUpperCase();
+            }else{
+                str=btn.getText().toString().toLowerCase();
+            }
+            if(view.getId()==R.id.btn_return){
+                if(edt_name.hasFocus()){
+                    edt_generic.requestFocus();
+                }else if(edt_generic.hasFocus()){
+                    edt_batch_no.requestFocus();
+                }else if(edt_batch_no.hasFocus()){
+                    edt_cost.requestFocus();
+                }else if(edt_cost.hasFocus()){
+                    edt_price.requestFocus();
+                }else if(edt_price.hasFocus()){
+                    edt_min.requestFocus();
+                }else if(edt_min.hasFocus()){
+                    edt_max.requestFocus();
+                }else if(edt_max.hasFocus()){
+                    edt_qty.requestFocus();
+                }else if(edt_qty.hasFocus()){
+                    edt_expiry_date.requestFocus();
+                }
+
             }
 
-        }
-
-        if(view.getId() ==R.id.btn_cap){
-            isCaptial=!isCaptial;
-            upperCase(isCaptial);
-        }
+            if(view.getId() ==R.id.btn_cap){
+                isCaptial=!isCaptial;
+                upperCase(isCaptial);
+            }
 
 
 
-        for(int j=0;j<relative_field.getChildCount();j++){
-            LinearLayout layout=(LinearLayout)relative_field.getChildAt(j);
+            for(int j=0;j<relative_field.getChildCount();j++){
+                LinearLayout layout=(LinearLayout)relative_field.getChildAt(j);
 //                Log.e("Relative--->", String.valueOf(layout.getChildAt(j)));
-            for(int k=0;k<layout.getChildCount();k++){
-                View v=(View)layout.getChildAt(k);
-                EditText editText;
-                TextView textView;
-                if(v instanceof EditText) {
-                    editText=(EditText)layout.getChildAt(k);
-                    if(editText.hasFocus()){
-                        int length=editText.getText().length();
-                        if(view.getId()==R.id.btn_backspace){
+                for(int k=0;k<layout.getChildCount();k++){
+                    View v=(View)layout.getChildAt(k);
+                    EditText editText;
+                    TextView textView;
+                    if(v instanceof EditText) {
+                        editText=(EditText)layout.getChildAt(k);
+                        if(editText.hasFocus()){
+                            int length=editText.getText().length();
+                            if(view.getId()==R.id.btn_backspace){
 
-                            if(length>0) {
-                                editText.getText().delete(length - 1, length);
+                                if(length>0) {
+                                    editText.getText().delete(length - 1, length);
+                                }
+                            }if (view.getId()==R.id.btn_space){
+                                editText.append(" ");
+                            } else {
+                                editText.append(str);
                             }
-                        }if (view.getId()==R.id.btn_space){
-                            editText.append(" ");
-                        } else {
-                            editText.append(str);
+
                         }
 
+                    }else if(v instanceof TextView){
+                        textView=(TextView)layout.getChildAt(k);
                     }
-
-                }else if(v instanceof TextView){
-                    textView=(TextView)layout.getChildAt(k);
                 }
             }
+        }
+
+        @Override
+        protected View doInBackground(View... views) {
+
+            return views[0];
         }
     }
 }
