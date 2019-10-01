@@ -50,7 +50,7 @@ public class BatchDialog extends DialogFragment {
                 }
             }
         };
-        BatchAdapter adapter=new BatchAdapter(rootView.getContext(),R.layout.batch_adapter,dbHelper.getAllBatch(product_id),dbHelper,interfaceBatch);
+        BatchAdapter adapter=new BatchAdapter(rootView.getContext(),R.layout.batch_adapter,dbHelper.getByIdBatch(product_id),dbHelper,interfaceBatch);
         listview_batch.setAdapter(adapter);
         return rootView;
     }

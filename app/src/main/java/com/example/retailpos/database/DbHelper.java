@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.retailpos.model.BatchBean;
 import com.example.retailpos.model.InventoryBean;
+import com.example.retailpos.model.MedicineBean;
 import com.example.retailpos.model.ProductBean;
 import com.example.retailpos.model.UI.InventoryUIBean;
 
@@ -91,7 +92,7 @@ public class DbHelper extends SQLiteOpenHelper {
     /*************************************************/
 
     /************************SELECT*********************/
-    public List<ProductBean> selectByNameProduct(ProductBean bean){
+    public List<ProductBean> getByNameProduct(ProductBean bean){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor c=db.rawQuery("SELECT * FROM Product WHERE name='"+bean.getName()+"'",null);
         List<ProductBean> list=new ArrayList<>();
@@ -111,7 +112,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<BatchBean> getAllBatch(int product_id){
+    public List<BatchBean> getByIdBatch(int product_id){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM Batch WHERE product_id="+product_id,null);
         List<BatchBean> list=new ArrayList<>();
@@ -153,7 +154,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<BatchBean> selectByProductIdBatch(BatchBean bean){
+    public List<BatchBean> getByProductIdBatch(BatchBean bean){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor c=db.rawQuery("SELECT * FROM Batch WHERE product_id="+bean.getProduct_id()+" AND batch_no="+bean.getBatch_no(),null);
         List<BatchBean> list=new ArrayList<>();
@@ -197,6 +198,26 @@ public class DbHelper extends SQLiteOpenHelper {
                 list.add(new InventoryBean(c.getInt(c.getColumnIndex("inventory_id")),
                         c.getInt(c.getColumnIndex("product_id")),
                         c.getInt(c.getColumnIndex("quantity"))));
+            }while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+        return list;
+    }
+
+    public List<MedicineBean> findByNameMedicine(String name){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor c=db.rawQuery("SELECT P.name || \" ( \" || B.expiry_date || \" )\" AS name , P.product_id,B.batch_id,P.price_buying,P.price_selling,B.quantity FROM Product AS P inner join Batch AS B ON P.product_id=B.product_id WHERE P.name like '"+name+"%'",null);
+        List<MedicineBean> list=new ArrayList<>();
+        if(c.moveToFirst()){
+            do{
+                list.add(new MedicineBean(c.getInt(c.getColumnIndex("product_id")),
+                        c.getInt(c.getColumnIndex("batch_id")),
+                        c.getString(c.getColumnIndex("name")),
+                        c.getInt(c.getColumnIndex("quantity")),
+                        c.getString(c.getColumnIndex("price_buying")),
+                        c.getString(c.getColumnIndex("price_selling"))
+                ));
             }while (c.moveToNext());
         }
         c.close();
@@ -253,6 +274,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
 //        return db.update("Inventory",cv,"product_id=?",new String[]{String.valueOf(bean.getProduct_id())});
     }
+
+
+
     /*************************************************/
 
     /***************************DELETE**********************/
