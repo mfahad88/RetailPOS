@@ -46,7 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     /************************INSERT*********************/
     public long insertProduct(ProductBean bean){
-
+        long i;
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
         cv.put("generic",bean.getGeneric());
@@ -56,9 +56,13 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put("minimum",bean.getMinimum());
         cv.put("maximum",bean.getMaximum());
         cv.put("update_date",formatter.format(new Date()));
-        Log.e("insertProduct--->","");
-        long i=db.insert("Product",null,cv);
-        db.close();
+        if(getByNameProduct(bean).size()>0){
+          i =  updateProduct(bean);
+        }else {
+            Log.e("insertProduct--->", "");
+            i = db.insert("Product", null, cv);
+        }
+            db.close();
         return i;
 
     }
@@ -72,7 +76,12 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put("expiry_date",bean.getExpiry_date());
         cv.put("quantity",bean.getQuantity());
         Log.e("insertBatch--->","");
-        long i=db.insert("Batch",null,cv);
+        long i;
+        if(getByProductIdBatch(bean).size()>0){
+            i=updateBatch(bean);
+        }else {
+            i = db.insert("Batch", null, cv);
+        }
         db.close();
         return i;
     }
@@ -85,7 +94,12 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put("update_date",formatter.format(new Date()));
 
         Log.e("insertInventory--->","");
-        long i=db.insert("Inventory",null,cv);
+        long i;
+        if(getByIdInventory(bean).size()>0){
+            i = updateInventory(bean);
+        }else {
+            i = db.insert("Inventory", null, cv);
+        }
         db.close();
         return i;
     }
@@ -108,7 +122,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }while (c.moveToNext());
         }
         c.close();
-        db.close();
+//        db.close();
         return list;
     }
 
@@ -169,7 +183,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }while (c.moveToNext());
         }
         c.close();
-        db.close();
+//        db.close();
         return list;
     }
 
@@ -201,7 +215,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }while (c.moveToNext());
         }
         c.close();
-        db.close();
+//        db.close();
         return list;
     }
 

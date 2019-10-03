@@ -94,32 +94,35 @@ public class AddEditFragment extends Fragment implements View.OnClickListener {
                     && !TextUtils.isEmpty(edt_price.getText()) && !TextUtils.isEmpty(edt_min.getText())
                     && !TextUtils.isEmpty(edt_max.getText()) &&!TextUtils.isEmpty(edt_expiry_date.getText())){
                 int product_id = -1;
-                int batch_id;
+                int batch_id = -1;
+                int inventory_id = -1;
                 BatchBean batchBean;
                 InventoryBean inventoryBean;
                 ProductBean bean=new ProductBean(0,edt_generic.getText().toString(),edt_name.getText().toString(),edt_cost.getText().toString(),
                         edt_price.getText().toString(),Integer.parseInt(edt_min.getText().toString()),Integer.parseInt(edt_max.getText().toString()));
-                if(dbHelper.getByNameProduct(bean).size()>0){
+                /*if(dbHelper.getByNameProduct(bean).size()>0){
                     product_id=dbHelper.updateProduct(bean);
                 }else{
                     product_id = (int) dbHelper.insertProduct(bean);
-                }
+                }*/
+                product_id = (int) dbHelper.insertProduct(bean);
                 batchBean = new BatchBean(0, product_id, edt_batch_no.getText().toString(), edt_expiry_date.getText().toString(), Integer.parseInt(edt_qty.getText().toString()));
-                if(dbHelper.getByProductIdBatch(batchBean).size()>0) {
+                /*if(dbHelper.getByProductIdBatch(batchBean).size()>0) {
                     batch_id = dbHelper.updateBatch(batchBean);
                 }else{
                     batch_id = (int) dbHelper.insertBatch(batchBean);
-                }
+                }*/
+                batch_id = (int) dbHelper.insertBatch(batchBean);
                 inventoryBean=new InventoryBean(0,product_id,Integer.parseInt(edt_qty.getText().toString()));
 
-                if(dbHelper.getByIdInventory(inventoryBean).size()>0){
+                /*if(dbHelper.getByIdInventory(inventoryBean).size()>0){
                     dbHelper.updateInventory(inventoryBean);
                 }else{
                     dbHelper.insertInventory(inventoryBean);
-                }
+                }*/
+                inventory_id= (int) dbHelper.insertInventory(inventoryBean);
 
-
-                if(product_id!=-1 && batch_id!=-1){
+                if(product_id!=-1 && batch_id!=-1 && inventory_id!=-1){
                     Toast.makeText(rootView.getContext(), "Saved...", Toast.LENGTH_SHORT).show();
                     edt_max.setText("");
                     edt_min.setText("");
